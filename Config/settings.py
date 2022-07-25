@@ -53,7 +53,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'QA_System.urls'
+ROOT_URLCONF = 'Config.urls'
 
 TEMPLATES = [
     {
@@ -71,7 +71,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'QA_System.wsgi.application'
+WSGI_APPLICATION = 'Config.wsgi.application'
 
 
 # Database
