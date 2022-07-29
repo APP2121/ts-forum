@@ -1,0 +1,68 @@
+
+{% extends 'page.html' %} -->
+{% load static %}
+{% block content %}
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}?{% now "U" %}"/>
+  <script src="{% static 'js/main.js' %}?{% now "U" %}"></script>
+</head>
+<div class="page register-page">
+<h1 class="title">Register</h1>
+
+<input type="file" id="image-input" accept="image/jpeg, image/png, image/jpg">
+<div id="display-image">
+        <img src="{% static 'images/default.png' %}" id="display-image" alt="profile-icon">
+        
+    
+</div>
+</div>
+<form method="POST" action="{% url 'profile'%}" class="register-form">
+  {% csrf_token %}
+<div class="form-group">
+  <label for="full_name">Your name: </label>
+  <input id="full_name" type="text" class="form-control" name="full_name" placeholder="Your Name">
+</div>
+<div class="form-group">
+  <label for="date_of_birth">DOB: </label>
+  <input id="date_of_birth" type="date" class="form-control" name="date_of_birth" placeholder="Date of Birth">
+</div>
+<div class="form-group">
+  <label for="contact_number">Contact Number: </label>
+  <input id="contact_number" type="phone" class="form-control" name="contact_number" placeholder="Contact Number">
+</div>
+<div class="form-group">
+  <label for="company_name">Company: </label>
+  <input id="company_name" type="text" class="form-control" name="company_name" placeholder="Company Name">
+</div>
+<div class="form-group">
+  <label for="designation">Designation: </label>
+  <input id="designation" type="text" class="form-control" name="designation" placeholder="designation">
+</div>
+<div class="fieldWrapper">
+  <label for="about">About: </label>
+  <input id="about" type="text" class="form-control" name="about" placeholder="About YourSelf">
+</div>
+  <!-- <input type="file" name="fileToUpload" id="fileToUpload">
+  <input type="submit" value="Upload Image" name="submit"> -->
+  <!-- aa -->
+<!-- <div class="main_div">Click the upload icon below to upload a file.</div>
+  <div class="image-upload">
+   <label for="file-input">
+       <img src="https://image.flaticon.com/icons/png/512/70/70310.png"/>
+   </label>
+
+   <input id="file-input" type="file"/>
+</div> -->
+
+  <!-- aa -->
+{% if form.non_field_errors %}
+<div class="non_form_errors">
+  <span class="error">{{form.non_field_errors.as_ul}}</span>
+</div>
+{% endif %}
+<input type="submit" value="Save" class="submit-button"/>
+</form>
+
+</div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% load static %}
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}?{% now "U" %}"/>
+</head>
+<!DOCTYPE html>
+<html>
+
+<title>User Profile</title>
+
+<head>
+</head>
+
+<body>
+    <div class="page register-page">
+    <h1>User Profile</h1>
+
+    <div class="container">
+
+        <div>
+            <ul>
+                {% for pro in profile %}
+                    <p>Name:</p>
+                    <li>{{ pro.full_name }}</li>
+                    <p>Date Of Birth:</p>
+                    <li>{{ pro.date_of_birth }}</li>
+                    <p>Contact Number:</p>
+                    <li>{{ pro.contact_number }}</li>
+                    <p>Company:</p>
+                    <li>{{ pro.company_name }}</li>
+                    <p>Designation:</p>
+                    <li>{{ pro.designation }}</li>
+                    <p>About:</p>
+                    <li>{{ pro.about }}</li>
+                {% endfor%}
+            </ul>
+            <div>
+                <image class="img"></image>
+            </div>
+        </div>
+    </div>
+   
+</body>
+ <script>
+        .img {
+            width: 20 px;
+            height: 20 px;
+            border: 2 px black;
+        }
+        .main {
+            display: flex;
+        }
+    </script>
+
+</html>
