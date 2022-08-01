@@ -1,0 +1,144 @@
+html,
+body {
+  font-family: Segoe UI;
+  background-color: #7ee1f2;
+}
+
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+blockquote {
+  border-left: 6px solid lightgray;
+  padding-left: 6px;
+  margin-left: 15px;
+}
+
+.main {
+  max-width: 1000px;
+  margin: 60px auto;
+  /* padding-left: 150px; */
+  padding: 50px; 
+  border-radius: 20px;
+  background-color: white;
+
+  box-shadow: 5px 10px #888888;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 24px;
+
+  border-bottom: 1px solid lightgray;
+}
+
+.user-menu ul li a,
+.main-menu ul li a {
+  color: black;
+  font-weight: 700;
+}
+
+.user-menu ul li a:hover,
+.main-menu ul li a:hover {
+  text-decoration: underline;
+}
+
+.user-menu ul li {
+  display: inline;
+  margin-left: 12px;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-page,
+.register-page {
+  margin: 0 auto;
+  min-width: 60%;
+  max-width: 60%;
+}
+
+.title {
+  margin: 20px auto 30px auto;
+  font-weight: 900;
+}
+
+.register-form {
+  width: 100%;
+}
+
+.fieldWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.fieldWrapper label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.fieldWrapper input {
+  margin-bottom: 6px;
+  border: 1px solid lightgray;
+  min-height: 40px;
+}
+
+.error {
+  font-size: 14px;
+  color: red;
+}
+
+.errorlist {
+  margin: 0;
+}
+
+.non_form_errors {
+  margin-bottom: 20px;
+}
+
+.submit-button {
+  display: block;
+  width: 120px;
+  height: 40px;
+  border: none;
+  border-radius: 20px;
+  background-color: black;
+  color: white;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+
+#display-image{
+  width: 250px;
+  height: 225px;
+  margin-left: 100px;
+  border: 1px solid black;
+  background-position: center;
+  background-size: cover;
+}
+#display-image_ic{
+  width: 300px;
+  height: 220px;
+  margin-left: 100px;
+  
+  background-position: center;
+  background-size: cover;
+  border: none;
+}
