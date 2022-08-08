@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}?{% now "U" %}"/>
 </head>
+<body class="home">
 <div class="page">
 <h1 class="title">Welcome In TS Forum</h1>
 <div class="user-menu">
@@ -12,23 +13,13 @@
     {% if user.is_authenticated %}
     <li><a href="{% url 'account_logout' %}">Logout</a></li>
     <li><a href="{% url 'profile' %}">Edit Profile</a></li>
+    <li><a href="{% url 'view_profile' %}">Profile</a></li>
     {% else %}
     <li><a href="{% url 'account_login' %}">Login</a></li>
     <li><a href="{% url 'account_signup' %}">Register</a></li>
     {% endif %}
   </ul>
 </div>
-{% for question in questions %}
-<div class="question-list-item">
-    <p class="question-list-item-title">
-      {{question.title}}
-    </p>
-    <p class="question-list-item-author">
-      {{question.author.username}}
-    </p>
-  </a>
-</div>
-
-{% endfor %}
 </div>
 {% endblock %}
+</body>

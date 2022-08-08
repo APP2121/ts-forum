@@ -1,54 +1,54 @@
-#from django.shortcuts import render
-
-# Create your views here.
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect , get_object_or_404
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
-from .models import UserModel
-from .forms import UserModelForm
+from .models import  User
+from .forms import UserForm, RegisterUserForm
 from django.contrib import messages
 from rest_framework.views import APIView
 from rest_framework import viewsets
-from . serializers import UserModelSerializer
+from . serializers import UserSerializer
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
-#from django.contrib.auth.models import User
+
+class UserView(viewsets.ModelViewSet):
+    serializer_class = UserSerializer
+    permission_classes = [AllowAny]
+    queryset = User.objects.all()
+
+    def get_instance(self):
+        return self.request.user
+
+    def user_profile(self, request, pk):
+        obj = self.get_object()
+        serializer = self.UserSerializer(obj, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return redirect('index')
+        return render(request, 'register1.html')
+
 
 def profile(request):
-    if request.method == "POST":
-        print("hello*********")
-        #username=request.POST.get('username')
-        full_name=request.POST.get('full_name')
-        date_of_birth=request.POST.get('date_of_birth')
-        contact_number=request.POST.get('contact_number')
-        company_name=request.POST.get('company_name')
-        designation=request.POST.get('designation')
-        about=request.POST.get('about')
-        data=UserModel(full_name=full_name,date_of_birth=date_of_birth,contact_number=contact_number,company_name=company_name,designation=designation, about=about)
-        data.save()
-        print("work is done")
-        return redirect('index')
-    return render(request, 'register1.html')
+    form = RegisterUserForm()
+    print(1)
+    if request.method == 'POST':
+        
+        pro = RegisterUserForm(request.POST,instance=request.user)
+        
+        if pro.is_valid():
+            pro.save()
+            return redirect('index')
+           
+
+    context = {
+        'form': form
+    }
+    return render(request, 'detail.html', context)
 
 def view_profile(request):
-    profile=UserModel.objects.all()
-    return render(request, 'View_profile.html', {'profile': profile})
+    profile = request.user 
+    return render(request, 'View_profile.html', {'profile':profile})
 
 def homePage(request):
-    User1 = UserModel.objects.all()
-    context = {
-        'questions': User1
-    }
-    return render(request, 'homepage.html', context)
+    User1 = User.objects.all()
+    return render(request, 'homepage.html')
 
-
-class profilelist(viewsets.ViewSet):
-    def list(self,request):
-        p=UserModel.objects.all()
-        ser=UserModelSerializer(p,many=True)
-        return Response(ser.data)
-    def retrieve(self,request,pk=None):
-        id=pk
-        if id is not None:
-            p=UserModel.objects.get(id=id)
-            serial=UserModelSerializer(p)
-            return Response(serial.data)

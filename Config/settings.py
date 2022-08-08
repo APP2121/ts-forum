@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 #import os.path
 from pathlib import Path
+from pickle import NONE
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -45,6 +46,39 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
 
 ]
+#for custom user
+AUTH_USER_MODEL = 'accounts.User'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+ADMINS = (
+    ('Shashank', 'shashank.mishr112@gmail.com'),
+)
+
+MANAGERS = ADMINS
+
+#tried the setting when i have got an error like [WinError 10061] No connection could be made because the target machine actively refused it
+# When you are playing around with the app and you expect that an email should
+# have been sent, just run `./manage.py send_mail` and you will get the mail
+# to the ADMINS account, no matter who the real recipient was.
+MAILER_EMAIL_BACKEND = 'django_libs.test_email_backend.EmailBackend'
+TEST_EMAIL_BACKEND_RECIPIENTS = ADMINS
+
+FROM_EMAIL = ADMINS[0][1]
+EMAIL_SUBJECT_PREFIX = '[dev config] '
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = FROM_EMAIL
+
+# Enter your gmail PW from the ADMINS email entered above.
+EMAIL_HOST_PASSWORD = 'Sha12avi'
+EMAIL_PORT = 587
+
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -69,7 +103,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-               # 'django.template.context_processors.request',
             ],
         },
     },
@@ -84,19 +117,35 @@ AUTHENTICATION_BACKENDS = [
     
 ]
 
+
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         # For each OAuth based provider, either add a ``SocialApp``
         # (``socialaccount`` app) containing the required client
         # credentials, or list them here:
         'APP': {
-            'client_id': '123',
-            'secret': '456',
+            'client_id': '1080883021814-49d87g45lcpo3982ao1g96m7vc6e0d4g.apps.googleusercontent.com',
+            'secret': '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',
             'key': ''
         }
     }
 }
 
+'''SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'APP': {
+            'client_id': '123',
+            'secret': '456',
+            'key': ''
+        },
+        'SCOPE': [
+            'profile',
+            'email',
+            'openid',
+            'https://www.googleapis.com/auth/calendar.readonly'
+        ],
+    }
+}'''
 WSGI_APPLICATION = 'Config.wsgi.application'
 
 
