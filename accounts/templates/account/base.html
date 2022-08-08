@@ -19,15 +19,19 @@
     </div>
     {% endif %}
 
-    <div>
-      <strong>Menu:</strong>
+    <div class="menu1">
+      
       <ul>
         {% if user.is_authenticated %}
-        <li><a href="{% url 'account_email' %}">Change E-mail</a></li>
-        <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
+        <li><a href="{% url 'account_email' %}"><button><b>Change E-mail</b></button></a></li>
+        <li><a href="{% url 'account_logout' %}"><button><b>Sign Out</b></button></a></li>
         {% else %}
-        <li><a href="{% url 'account_login' %}">Sign In</a></li>
-        <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
+        <div class="child">
+        <li><a href="{% url 'account_login' %}"><button><b>Sign In</b></button></a></li>
+        </div>
+        <div class="child">
+        <li><a href="{% url 'account_signup' %}"><button><b>Sign Up</b></button></a></li>
+        </div>
         {% endif %}
       </ul>
     </div>

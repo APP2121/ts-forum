@@ -1,7 +1,11 @@
 html,
 body {
   font-family: Segoe UI;
-  background-color: #7ee1f2;
+  background-color: #e89b0d6f;
+  background:url(https://media.istockphoto.com/photos/business-customer-service-and-support-concept-picture-id1313060222?b=1&k=20&m=1313060222&s=170667a&w=0&h=eCXjULgOvA7gBKvO0LhbPomyuHQ1B6UTaXYwud_E3ms=) no-repeat center;
+  background-size: cover;
+  background-position: center;
+  
 }
 
 *, *::after, *::before {
@@ -99,6 +103,12 @@ blockquote {
   min-height: 40px;
 }
 
+.fieldset {
+  background-color: aliceblue;
+  font-style: oblique;
+}
+
+
 .error {
   font-size: 14px;
   color: red;
@@ -141,4 +151,114 @@ blockquote {
   background-position: center;
   background-size: cover;
   border: none;
+}
+
+.heading{
+  font-style: inherit;
+  font-size: larger;
+  margin-left: 250px;
+}
+
+
+
+.statement{
+  width:100%;
+  margin:auto;
+  max-width:525px;
+  min-height:50px;
+  position:relative;
+  
+}
+
+.socialaccount_ballot{
+  font-style: italic;
+  font-display: 30px;
+  display: inline-block;
+  margin-left:361px;
+  
+}
+
+.signup{
+  border-style: inset;
+  background-color: aliceblue;
+  font-variant: small-caps;
+  font:600 16px/18px 'Open Sans',sans-serif;
+  box-shadow: 5px 5px;
+  border-radius: 10px;
+}
+
+.login{
+  border-style: inset;
+  background-color: aliceblue;
+  font-variant: small-caps;
+  font:600 16px/18px 'Open Sans',sans-serif;
+  box-shadow: 5px 5px;
+  border-radius: 10px;
+}
+
+.signin{
+  width:100%;
+  margin:auto;
+  max-width:525px;
+  min-height:290px;
+  position:relative;
+  
+}
+
+
+.menu1{
+  border-block-end-style: 10px;
+  border-style: inset;
+  display: inline-block;
+  
+}
+
+.login-wrap{
+  width:100%;
+  margin:auto;
+  max-width:525px;
+  min-height:670px;
+  position:relative;
+  
+}
+
+.home{
+  background: url(https://motionarray.imgix.net/preview-168738-46fYQmML5k-high_0004.jpg?w=660&q=60&fit=max&auto=format) no-repeat center;
+  background-size: cover;
+  background-position: center;
+
+}
+
+
+.child{
+  display: inline-block; 
+  padding-left: 10px;
+  
+}
+
+.profileview{
+  background: url(https://images.all-free-download.com/images/graphicwebp/bridge_human_profile_272492.webp)no-repeat center;
+  background-size: cover;
+  background-position: center;
+}
+
+.logout{
+  
+  max-width:525px;
+  min-height:620px;
+  background: no-repeat;
+}
+
+.detail1{
+  background: url(https://images.all-free-download.com/images/graphicwebp/bridge_human_profile_272492.webp)no-repeat center;
+  background-size: cover;
+  background-position: center;
+}
+
+.detail_heading{
+  padding-left: 500px;
+}
+
+.form-group{
+  padding-left: 500px;
 }

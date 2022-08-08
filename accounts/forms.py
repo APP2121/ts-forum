@@ -1,14 +1,21 @@
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth.models import User
-from .models import UserModel
+from pyexpat import model
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm,UserChangeForm,UserModel
+from .models import User
 from django import forms
 from django.forms.models import ModelForm
 from django.forms.widgets import FileInput
 
+from django import forms
 
-class UserModelForm(ModelForm):
+class RegisterUserForm(ModelForm):
     class Meta:
-        model = UserModel
+        model = User
+        fields = ['full_name', 'date_of_birth', 'contact_number', 'about', 'company_name', 'designation']
+            
+
+class UserForm(ModelForm):
+    class Meta:
+        model = User
         fields = ['full_name', 'date_of_birth', 'contact_number', 'about', 'company_name', 'designation']
         exclude = ['user']
         widgets = {
@@ -17,5 +24,9 @@ class UserModelForm(ModelForm):
 
 class ProfileUserForm(UserCreationForm):
     class Meta:
-        model = UserModel
+        model = User
         fields = '__all__'
+
+
+
+
