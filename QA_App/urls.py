@@ -13,8 +13,17 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from unicodedata import name
 from django.urls import path
+from QA_App import views
+from django.urls import re_path as url
 
 urlpatterns = [
-        
+        path('', views.base_view, name='home'),        
+        path('all_questions/', views.all_questions, name = 'all_questions'),
+        path('show_detailed_view_of_question/<int:pk>/', views.detailed_view_of_individual_question, name = 'detail_view'),
+        path('show_answers/<int:pk>/', views.all_answers, name = 'show_answers'),
+        path('show_searched_value', views.searched_vlaue, name='search_values'),
+        path('ask_question/', views.ask_question, name='ask_question'),
+        path('provide_your_answer/', views.provide_your_answer, name='provide_your_answer')
 ]

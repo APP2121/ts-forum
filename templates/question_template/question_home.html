@@ -1,0 +1,73 @@
+{% extends "question_template/base_template.html" %}
+{% load static %}
+{% block body %}
+
+
+	<title>QA Home</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>		
+	<link rel="stylesheet" href="{% static "css/three_column.css" %}" />	
+	
+	<div id="container">
+		
+		<div id="header">
+				
+		</div>	
+		
+		<div id="sidebar-left">
+			<h2>Sidebar Left</h2>
+			<img src="{% static "images/Flower.jpeg" %}" height="300" width="200" alt="No image">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		</div>
+
+
+		<div id="content">
+			<h1>Questions</h1>
+			{% for question in questions%}
+				
+				<ul>					 
+					<li> <h4> <b>  Question ID  -->  ({{question.auto_question_id}}) </b> </h4> </li> 
+					<br>
+					(Created_At: {{question.created_at}}) (Technology Name: {{question.technology_name}}) (status: {{question.status_name}}) (Created By: {{question.get_questions}})<br>
+					<br>
+					<h5><b>{{question.question_title}}</b></h5> <a href="{% url 'detail_view' question.auto_question_id %}"> [Show Details]  </a> <br> <a href="{% url 'show_answers' question.auto_question_id %}">[Show Answer]</a>
+
+					<!-- <aside>
+						<p>The Rough-skinned Newt defends itself with a deadly neurotoxin.</p>
+						(type{{question.auto_question_id|add:"0"}}) ({{user.auto_user_id|add:"0"}})						
+					</aside> -->
+				</ul>
+				
+			{% endfor %}
+		</div>
+
+		
+
+		<div id="sidebar-right">
+			<h2>Sidebar Right</h2>
+			<img src="{% static "images/index.jpeg" %}" height="300" width="200" alt="No image">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		</div>
+		
+		
+		<div id="footer">
+			<h3>Footer</h3>
+			<img src="{% static "images/Flower.jpeg" %}" height="100" width="100" alt="No image">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		</div>	
+	</div>
+
+	{% endblock%}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

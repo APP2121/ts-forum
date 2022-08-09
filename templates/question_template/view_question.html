@@ -1,0 +1,54 @@
+{% extends "question_template/base_template.html" %}
+
+{% block css %}
+{% load static %}
+<link rel="stylesheet"  type="text/css" href="{% static "css/view_question.css" %}" />
+{% endblock %}
+
+{% block body %}
+
+    <div class="que">
+        <h1>Questions</h1>
+        {% for question in questions %}
+        <ul>
+            <li>ID  -->  ({{question.auto_question_id}}) (Created_At: {{question.created_at}}) (Technology Name: {{question.technology_name}}) (status: {{question.status_name}}) </li> 
+            {{question.question_title}} <a href="{% url 'detail_view' question.auto_question_id %}"> [Show Details]  </a>,  <a href="{% url 'show_answers' question.auto_question_id %}">[Show Answer]</a>
+            <br> <br>
+            {{question.question_description}}            
+        </ul>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+    <!-- <table border="2">
+        <thead>
+            <th>Question ID</th>
+            <th>Question Title</th>
+            <th>Question Description</th>
+            <th>Created At</th>
+            <th>Updated At</th>
+        </thead>
+        {% for question in questions%}
+        <tr>
+            <td>{{question.auto_question_id}}</td>
+            <td>{{question.question_title}}</td>
+            <td>{{question.question_description}}</td>
+            <td>{{question.created_at}}</td>
+            <td>{{question.updated_at}}</td>
+        </tr>
+        {% endfor %}
+    </table> -->
+
+<!-- <h1>This is the view_question template </h1> -->
+<!-- <aside>
+                <p>The Rough-skinned Newt defends itself with a deadly neurotoxin.</p>
+    </aside> -->
+
+    
+
+
+
+
+
+
+

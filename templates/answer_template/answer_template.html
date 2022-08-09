@@ -1,0 +1,22 @@
+{% extends "question_template/base_template.html" %}
+{% block css %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static "css/view_answer.css" %}" />
+{% endblock %}
+{% block body %}
+<div class="ans">
+    <h1>Answers</h1>
+    {%for answer in answers%}    
+    <ul>
+        <li>ID  -->  ({{answer.auto_answer_id}}) </li> 
+        (Created_At: {{answer.created_at}}) (Technology Name: {{answer.technology_name}}) (status: {{answer.status_name}}) (Created_By : {{answer.user_answer}}) <br>
+        <br>
+        {{answer.answer}}         
+    </ul>
+    {% endfor %}
+    <br>
+    <br>
+    <a href="{% url 'provide_your_answer' %}"> [You can provide your answer here] </a>      
+</div>
+{% endblock %}
+
