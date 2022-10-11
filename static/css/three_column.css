@@ -4,7 +4,7 @@ body {
   }
   
   #container {
-    margin: 0 auto;      
+    /* margin: 0 auto;       */
     text-align: left;    
     width: 1460px;        
     padding-top: 40px;    
@@ -26,21 +26,31 @@ body {
 
   
   #sidebar-left {
-    float: left;         
-    width: 200px;        
+    float: left;  
+    width: 200px;     
   }
+    
   
   #sidebar-right {
     float: right;        
     width: 200px;        
   }
   
+  
   #footer {
     clear: both;         
-    width: 1160px;       
-  }
+    width: 1160px;  
+    /* flex: auto; */
+    padding-top: 40px;          
+  } 
 
-  aside {
+  /* .el {
+    margin-right: 30px;
+  } */
+
+  
+
+  /* aside {
     width: 40%;
     padding-left: .5rem;
     margin-left: .5rem;
@@ -48,4 +58,7 @@ body {
     box-shadow: inset 5px 0 5px -5px #29627e;
     font-style: italic;
     color: #29627e;
-  }
+  } */
+
+
+  

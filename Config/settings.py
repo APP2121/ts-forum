@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+from telnetlib import LOGOUT
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -41,8 +42,80 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'QA_App',
+    'accounts',
+    'crispy_forms',
+    'django.contrib.sites',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    'django.contrib.humanize',
 ]
+
+SITE_ID = 1
+
+#for custom user
+AUTH_USER_MODEL = 'accounts.User'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+ADMINS = (
+    ('Atul', 'atulprakash21@gmail.com'),
+)
+
+MANAGERS = ADMINS
+
+MAILER_EMAIL_BACKEND = 'django_libs.test_email_backend.EmailBackend'
+TEST_EMAIL_BACKEND_RECIPIENTS = ADMINS
+
+FROM_EMAIL = ADMINS[0][1]
+EMAIL_SUBJECT_PREFIX = '[dev config] '
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = FROM_EMAIL
+
+EMAIL_HOST_PASSWORD = 'Sha12avi'
+EMAIL_PORT = 587
+
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {        
+        'APP': {
+            'client_id': '1080883021814-49d87g45lcpo3982ao1g96m7vc6e0d4g.apps.googleusercontent.com',
+            'secret': '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',
+            'key': ''
+        }
+    }
+}
+
+'''SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'APP': {
+            'client_id': '123',
+            'secret': '456',
+            'key': ''
+        },
+        'SCOPE': [
+            'profile',
+            'email',
+            'openid',
+            'https://www.googleapis.com/auth/calendar.readonly'
+        ],
+    }
+}'''
+
+
+
+
+AUTH_USER_MODEL = 'accounts.User'
+
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -72,11 +145,15 @@ TEMPLATES = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [    
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+    
+]
+
 WSGI_APPLICATION = 'Config.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 
 DATABASES = {
@@ -89,9 +166,6 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-
-# Password validation
-# https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -108,10 +182,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# Internationalization
-# https://docs.djangoproject.com/en/4.0/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -121,14 +191,11 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.0/howto/static-files/
-
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [STATIC_DIR]
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

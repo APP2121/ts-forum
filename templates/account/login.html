@@ -1,0 +1,71 @@
+{% extends "account/base.html" %}
+
+{% load crispy_forms_tags %}
+{% block css %}
+{% load static %}
+<link rel="stylesheet"  type="text/css" href="{% static "css/login.css" %}" />
+{% endblock %}
+
+<!-- {% load i18n %} -->
+{% load account socialaccount %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+
+<div class="login" >
+  <div class="card">
+      <div class="card-body">
+
+        <h1> <center> {% trans "Sign In" %}  </center> </h1>
+
+        {% get_providers as socialaccount_providers %}
+
+        {% if socialaccount_providers %}
+          <p> <center> {% blocktrans with site.name as site_name %}Please sign in with one
+          of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
+          for a {{ site_name }} account and sign in below:{% endblocktrans %} </center> </p>
+
+          <div class="socialaccount_ballot">
+
+            <ul class="socialaccount_providers">
+              {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+            </ul>
+
+            <div class="login-or">{% trans 'or' %}</div>
+
+          </div>
+
+          {% include "socialaccount/snippets/login_extra.html" %}
+
+        {% else %}
+          <p> <center>
+            {% blocktrans %}
+              If you have not created an account yet, then please
+              <a href="{{ signup_url }}">sign up</a> first.
+            {% endblocktrans %}
+          </center>
+          </p>
+        {% endif %}
+
+        <div class="card-columns mx-auto d-flex justify-content-center col-12" style="width: 30rem; text-align: center; float: center;  background-color: rgb(1, 26, 66); color: whitesmoke;">
+          <div class="card-body">
+
+            <form class="login" method="POST" action="{% url 'account_login' %}">
+              {% csrf_token %}
+              {{ form|crispy }}
+              {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+              {% endif %}
+              <a class="button secondaryAction" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+              <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
+            </form>
+          </div>
+        </div>
+
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

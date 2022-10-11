@@ -19,7 +19,7 @@ from django.urls import path, include
 
 from rest_framework.routers import DefaultRouter
 
-from QA_App import views
+from accounts import views
 
 router = DefaultRouter()
 router.register('users', views.userViewSet)
@@ -27,6 +27,6 @@ router.register('questions', views.questionViewSet)
 router.register('answers', views.questionViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('base/', include('QA_App.urls')),   
+    path('', include('accounts.urls')),   
     path('api/', include(router.urls)) ,
 ]

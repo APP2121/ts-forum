@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Online Compiler</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  </head>
+  <body style="font-family: Verdana;">
+    <h1 style="text-align: center;">Online Compiler</h1>
+    {{message}}
+
+    <form action="/runcode" method="post">
+        {% csrf_token %}
+        <div class="mb-3" style="margin-left: 50px; margin-right: 50px;">
+          <label for="codearea" class="form-label" style="font-size: larger;">Code Area</label>
+          <textarea type="text" class="form-control" id="codearea" name="codearea" rows="10" onkeydown="if(event.keyCode===9) {var v = this.value, s = this.selectionStart, e= this.selectionEnd; this.value= v.substring(0,s) + '\t' + v.substring(e); this.selectionStart = ths.selectionEnd=s+1;return false;}"> {{code}} </textarea>
+          <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
+        </div>
+
+        <div class="mb-3" style="margin-left: 50px; margin-right: 50px;">
+          <label for="output" class="form-label" style="font-size: larger;">Output</label>
+          <textarea type="text" class="form-control" id="output" rows="6" disabled> {{output}} </textarea>
+        </div>
+
+        <!-- <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div> -->
+        <button type="submit" class="btn btn-primary" style="margin-left: 50px;">Submit</button>
+      </form>
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+  </body>
+</html>
