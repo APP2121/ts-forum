@@ -1,0 +1,39 @@
+body {
+	text-align: center;				/* This is a hack for older browsers to center the page */
+    background-color: rgb(1, 26, 66);
+
+}
+
+#container {
+	/* margin: 0 auto; 				This centers the page in modern browsers */
+	text-align: left; 				/* This is a hack for older browsers to center the page */
+	width: 1200px; 					/* This sets our total page width */
+    padding-top: 20px; 
+    padding-left: 20px; 
+}
+
+#content {
+	float: right;					/* This causes the content to move to the right */
+	width: 1000px;					/* We need to set the width whenever we float an element */
+    padding-left: 100px;
+}
+
+#sidebar {
+	float: left; 					/* This causes the sidebar to move to the left */
+	width: 150px; 					/* We need to set the width whenever we float an element */
+    position: fixed;    
+}
+
+
+
+.center {
+    margin: auto;
+    width: 60%;
+    padding: 20px;
+    box-shadow: 5px 10px whitesmoke;
+}
+
+.hideform {
+    display: none;
+}
+

@@ -1,0 +1,60 @@
+#a1{
+    /* background-color: rgb(69, 132, 233);  */
+    color: whitesmoke;   
+    border-radius: 30px; 
+    padding-left: 68px; 
+    padding-right: 68px; 
+    padding-top: 12px; 
+    padding-bottom: 12px;  
+}
+
+#a1:hover{ background-color: #041a92 !important; }
+/* #a1:visited{ background-color: #14db1e !important; } */
+
+#a2{
+    /* background-color: rgb(69, 132, 233);  */
+    color: whitesmoke;   
+    border-radius: 30px; 
+    padding-left: 60px; 
+    padding-right: 60px; 
+    padding-top: 12px; 
+    padding-bottom: 12px;
+}
+#a2:hover{ background-color: #041a92 !important;}
+/* #a2:visited{ background-color: #14db1e !important;} */
+
+
+#a3{
+    /* background-color: rgb(69, 132, 233);  */
+    color: whitesmoke;   
+    border-radius: 30px; 
+    padding-left: 65px; 
+    padding-right: 65px; 
+    padding-top: 12px; 
+    padding-bottom: 12px;
+}
+#a3:hover{background-color: #041a92 !important;}
+
+#a4{
+    /* background-color: rgb(69, 132, 233);  */
+    color: whitesmoke;   
+    border-radius: 30px; 
+    padding-left: 60px; 
+    padding-right: 60px; 
+    padding-top: 10px; 
+    padding-bottom: 10px;
+}
+#a4:hover{background-color: #041a92 !important;}
+
+
+#b1{
+    /* background-color: rgb(69, 132, 233);  */
+    color: whitesmoke;   
+    border-radius: 30px; 
+    padding-left: 60px; 
+    padding-right: 60px; 
+    padding-top: 10px; 
+    padding-bottom: 10px;
+}
+
+#b1:hover{background-color: #041a92 !important;}

@@ -1,0 +1,46 @@
+{% extends "question_template/base_template.html" %}
+{% block css %}
+{% load static %}
+{% load humanize %}
+
+<link rel="stylesheet" type="text/css" href="{% static "css/view_answer.css" %}" />
+{% endblock %}
+
+
+{% block body %}
+
+<div class="container-fluid" style="background-color: rgb(1, 26, 66);">				
+    <center> <h1 style="color: whitesmoke;"> <b> Answers </b></h1> </center>
+    <br>
+        <!-- <div class="ans"> -->
+            <!-- <h1>Answers</h1> -->
+            {%for answer in answers%} 
+            <div class="card-columns mx-auto d-flex justify-content-center col-12" style="width: 57rem; text-align: center; float: center; color: whitesmoke; background-color: #041a92; border-radius: 30px;  margin-bottom: 10px;">
+                <div class="card-body">
+            
+                    <ul>
+                        <li>ID  -->  ({{answer.id}}) </li> 
+                        (Created_At: {{ answer.created_at|naturaltime }}) (Technology Name: {{answer.technology_name}}) (status: {{answer.status_name}}) (Created_By : {{answer.user_answers}}) <br>
+                        <br>
+                        {{answer.answer}}         
+                    </ul>
+
+                    <div class="card-columns mx-auto d-flex justify-content-center col-12" style="width: 17rem; text-align: center; float: right; color: whitesmoke; background-color: #041a92; border-radius: 30px;  ">
+                        <div class="card-body"> 
+                            <form class="d-flex flex-row" method='post', action="{% url 'like_value_ans' answer.id %}">
+                                {% csrf_token %} 
+                                <div class="p-2"> <button class="btn"  type="submit" name="answer.id" value="{{ answer.id }}" style="color: white; "> <img src="{% static "images/like.png" %}" width="40px" height="40px"> </button> [{{answer.total_ans_likes}}] Likes </div>                                    
+
+                            </form>
+                        </div>
+                    </div> 
+
+                </div>
+            </div>
+            {% endfor %}
+            <br>
+            <br>
+        <!-- </div> -->
+</div>
+{% endblock %}
+

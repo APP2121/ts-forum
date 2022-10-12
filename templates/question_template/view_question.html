@@ -1,0 +1,42 @@
+{% extends "question_template/base_template.html" %}
+{% block css %}
+{% load static %}
+{% load humanize %}
+
+<link rel="stylesheet"  type="text/css" href="{% static "css/view_question.css" %}" />
+{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid" style="background-color: rgb(1, 26, 66);">				
+    <center> <h1 style="color: whitesmoke;"> <b> All Questions </b></h1> </center>
+    <br>
+            {% for question in questions %}
+            <div class="card-columns mx-auto d-flex justify-content-center col-12" style="width: 65rem; text-align: center; float: center; color: whitesmoke; background-color: #041a92; border-radius: 30px;  margin-bottom: 10px;">
+                <div class="card-body">
+
+                    <ul>
+                        <li>ID  :-->  ({{question.id}}) (Created_At: {{question.created_at|naturaltime }}) (Technology Name: {{question.technology_name}}) (status: {{question.status_name}}) (Created by: {{question.user_questions}}) </li> 
+                        <br> <br>                                            
+                        Q title :--> {{question.question_title}} &nbsp; &nbsp; <a style="border: 3px solid whitesmoke; padding: 3px; color: whitesmoke;" href="{% url 'detail_view' question.id %}">[Show Details]</a>  &nbsp; &nbsp;   <a style="border: 3px solid whitesmoke; padding: 3px; color: whitesmoke;" href="{% url 'show_answers' question.id %}">[Show Answer]</a> 
+                        <br> <br>
+                        Q description :--> {{question.question_description}}                                 
+                    </ul>
+
+                </div>
+            </div>
+            {% endfor %}
+            <br>
+            <br>
+            <br>
+            <br>
+    </div>
+</div>
+
+{% endblock %}
+
+    
+
+
+
+

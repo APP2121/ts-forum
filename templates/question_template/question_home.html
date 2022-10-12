@@ -1,0 +1,172 @@
+{% extends "question_template/base_template.html" %}
+{% load static %}
+{% load humanize %}
+{% block head %}
+<link rel="stylesheet" href="{% static "css/question_home.css" %}">
+<link rel="stylesheet" href="{% static "css/three_column.css" %}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">	
+<!-- <link rel="stylesheet" type="text/css" href="css/my_extra_custom_css.css" media="screen" /> -->
+{% endblock %}
+
+{% block body %}
+
+
+	<title>Forum</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>	
+	
+	<div style="background-color: rgb(1, 26, 66);">					
+			
+			<div id="container">			
+				
+				<div  id="sidebar-left"  style="text-align: center">					
+					
+					<a href="#" id="b1" class= "btn btn-blue font-semibold normal-case"> Sample </a>
+
+					<br>
+					<a href="#" id="a1" class= "btn btn-blue font-semibold normal-case"> About </a> 
+
+					<br>
+					<a href="#" id="a2" class= "btn btn-blue font-semibold normal-case">Services</a> 
+					
+					<br>
+					<a href="#" id="a3" class= "btn btn-blue font-semibold normal-case">Clients</a> 
+					
+					<br>					
+					<a href="#" id="a4" class= "btn btn-blue font-semibold normal-case">Contact</a>	
+					
+					<!-- <br> -->					
+					<!-- <div style="border: solid #818ed6 2px; color: whitesmoke;">Fixed "Menu Item 1"</div><br>
+					<div style="border: solid #818ed6 2px; color: whitesmoke;">Fixed "Menu Item 2"</div><br> -->
+					<!-- <div style="border: solid #818ed6 2px; color: whitesmoke;">Fixed "Menu Item 3"</div><br> -->
+
+
+					<div class="card" style="width: 18rem; color: whitesmoke; background-color: #041a92; border-radius: 30px; ">
+						<img src="{% static "images/Flower.jpeg" %}" style="border-radius: 30px;" height="150px"  class="card-img-top" alt="...">
+						<div class="card-body">
+							<h5 class="card-title">Card title</h5>
+							<p class="card-text">Some quick example text to build .</p>
+							<a href="#" class="btn btn-primary">Go somewhere</a> <br><br>
+							<a href="#" style="color: whitesmoke;" class="card-link">Card link</a>
+							<a href="#" style="color: whitesmoke;" class="card-link">Another link</a>
+						</div>
+					</div>
+					
+				</div>
+
+
+				<div id="content">
+					{% for question in questions%}
+
+					<div class="card" style=" color: whitesmoke; background-color: #041a92; border-radius: 30px;  margin-bottom: 10px;">
+						<div class="card-body">
+
+							<h1 style="color: whitesmoke;">Questions</h1>
+							
+								
+								<ul>					 
+									<li style="color : whitesmoke;"> <h4> <b>  Question ID  -->  ({{question.id}}) </b> </h4> </li> 
+									<br>
+									(Created_At: {{question.created_at|naturaltime}}) (Technology Name: {{question.technology_name}}) (status: {{question.status_name}}) (Created By: {{question.user_questions}})<br>
+									<br>
+									<h5 style="color: whitesmoke;"><b>{{question.question_title}}</b></h5> <a style="color: whitesmoke;" href="{% url 'detail_view' question.id %}"> [Show Details]  </a> 
+									<!-- <br> <a style="color: whitesmoke;" href="{% url 'show_answers' question.id %}">[Show Answer]</a> -->
+
+									<!-- <aside>
+										<p>The Rough-skinned Newt defends itself with a deadly neurotoxin.</p>
+										(type{{question.auto_question_id|add:"0"}}) ({{user.auto_user_id|add:"0"}})						
+									</aside> -->									
+								</ul>							
+							
+						</div>		
+					</div>
+					{% endfor %}
+
+
+				</div>
+
+				
+				<div  id="sidebar-right"  style="text-align: center">	
+
+					<div class="card" style="width: 18rem; color: whitesmoke; background-color: #041a92; border-radius: 30px; ">
+						<img src="{% static "images/index.jpeg" %}" style="border-radius: 30px;" height="150px"  class="card-img-top" alt="...">
+						<div class="card-body">
+							<h5 class="card-title">Search Question</h5>
+							<!-- <p class="card-text"> you can search your question before asking the new one</p> -->
+							<a href="#" class="btn btn-primary">Go somewhere</a> <br><br>
+							<a href="#" style="color: whitesmoke;" class="card-link">Card link</a>
+							<a href="#" style="color: whitesmoke;" class="card-link">Another link</a>
+						</div>
+					</div>
+
+					<br>
+					<br>
+
+					<div class="card" style="width: 18rem; color: whitesmoke; background-color: #041a92; border-radius: 30px; ">
+						<img src="{% static "images/bird.jpeg" %}" style="border-radius: 30px;" height="150px" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h5 class="card-title">Card title</h5>
+							<p class="card-text">Some quick example text to build .</p>
+							<a href="#" class="btn btn-primary">Go somewhere</a> <br><br>
+							<a href="#" style="color: whitesmoke;" class="card-link">Card link</a>
+							<a href="#" style="color: whitesmoke;" class="card-link">Another link</a>
+						</div>
+					</div>
+
+					<!-- <div style="border: solid #818ed6 10px; color: darkblue;">Menu Item 1</div><br>
+					<div style="border: solid #818ed6 10px; color: darkblue;">Menu Item 2</div><br>
+					<div style="border: solid #818ed6 10px; color: darkblue;">Menu Item 3</div><br>
+
+					<a  class= "btn btn-info" href="#" style="color: darkblue;"> Sample </a>
+
+					<br><br>
+					<a class= "btn btn-info" href="#" style="color: darkblue;">About</a> <br><br>
+					<a class= "btn btn-info" href="#" style="color: darkblue;">Services</a> <br><br>
+					<a class= "btn btn-info" href="#" style="color: darkblue;">Clients</a> <br><br>
+					<a class= "btn btn-info" href="#" style="color: darkblue;">Contact</a> 			 -->
+
+					
+					
+				</div>
+
+				<!-- <div id="sidebar-right">
+					<h2>Sidebar Right</h2>
+					<img src="{% static "images/index.jpeg" %}" height="300" width="200" alt="No image">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				</div> -->									 
+
+				
+				<div id="footer" style="display: flex; justify-content: center; align-items: center; padding-top: 60px; ">
+					<!-- <h3>Footer</h3> -->
+					<!-- <button style="font-size:24px"> <i class="fa fa-envelope">e-mail</i> </button> -->
+					<div style="align-self: flex-start;"> <button style="font-size:14px"> <i class="fa fa-envelope"></i> email: abc@thinksys.com</button></div>
+					<div class="el-1" style="margin-right: 20px;margin-left: 30px; align-self: flex-start;" > <i style="font-size:14px; color: red;" class="fa" >&#xf0e0;</i> email : <a href="#"> abc@thinksys.com</a>  </div>
+					<div class="el-2" style="margin-right: 20px;margin-left: 30px; color: whitesmoke;">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed unde ex temporibus est maxime ipsam deleniti, itaque natus, similique optio eos odio dignissimos quia harum exercitationem, laudantium nulla incidunt at?</div>
+					<div class="el-3" style="margin-right: 20px;margin-left: 30px; color: whitesmoke;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur nihil accusantium, ducimus corporis neque repellendus placeat itaque excepturi nisi commodi totam? Temporibus aliquam dolore voluptatum reiciendis consectetur voluptates, cupiditate totam!</div>
+					<div class="el-4" style="margin-right: 20px;margin-left: 30px; color: whitesmoke;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut provident aperiam unde ipsa impedit dolorem aspernatur nam libero laudantium. Id possimus veniam totam reprehenderit tempora tempore velit blanditiis nostrum rerum.</div>
+					<div class="el-5" style="margin-right: 20px;margin-left: 30px; color: whitesmoke;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi doloremque harum ducimus dolore praesentium hic quod nobis porro, eius velit ad, ipsum debitis dignissimos corporis voluptas sit quaerat exercitationem eos.</div>
+					<div class="el-6" style="margin-right: 20px;margin-left: 30px; color: whitesmoke;">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Numquam, quae minus debitis esse fugiat nisi illo beatae, enim nemo minima placeat neque veniam laboriosam aliquam error dignissimos unde sunt rem.</div>
+					<!-- <div class="el-7" style="margin-right: 20px;margin-left: 30px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi doloremque harum ducimus dolore praesentium hic quod nobis porro, eius velit ad, ipsum debitis dignissimos corporis voluptas sit quaerat exercitationem eos.</div>
+					<div class="el-8" style="margin-right: 20px;margin-left: 30px;">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Numquam, quae minus debitis esse fugiat nisi illo beatae, enim nemo minima placeat neque veniam laboriosam aliquam error dignissimos unde sunt rem.</div> -->
+					<!-- <img src="{% static "images/Flower.jpeg" %}" height="100" width="500" alt="No image">
+					<h4>Total number of users registerd yet are : {{count}} {{user.username}} </h4> 
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> -->
+				</div>	
+			</div>
+
+	</div>
+
+	{% endblock%}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
